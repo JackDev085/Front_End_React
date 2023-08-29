@@ -46,15 +46,27 @@ function App() {
       }else{
         setProdutos([...produtos,retorno_convertido]);
         alert('Produto cadastrado com sucesso!');
+        limparFormulário();
       }
   })
 }
+  //limpar formulário
+
+  const limparFormulário =() => {
+    setObjProduto(produto);
+  }
+  //sececionar produto
+
+  const selecionarProduto=(indice)=>{
+    setObjProduto(produtos[indice]);
+    setBtnCadastrar(false);
+  }
   //retorno
   return (
     <div>
-      <Formulario botao={btnCadastrar} eventoTeclado={aoDigitar}cadastrar={cadastrar}
+      <Formulario botao={btnCadastrar} eventoTeclado={aoDigitar}cadastrar={cadastrar} obj={objProduto}
       />
-      <Tabela vetor={produtos}/>
+      <Tabela vetor={produtos} selecionar={selecionarProduto}/>
     </div>
   );
 }
