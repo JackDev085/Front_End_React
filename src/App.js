@@ -50,10 +50,44 @@ function App() {
       }
   })
 }
+
+ //Método remover produto
+ const remover = () => {
+  fetch('http://localhost:8080/remover/'+objProduto.codigo,{
+    method:'delete',
+    headers:{
+      'Content-type':'application/json',
+      'Accept':'application/json'
+    }
+  })
+  .then(retorno => retorno.json())
+  .then(retorno_convertido=>{
+    //mensagem
+    alert(retorno_convertido.mensagem);
+
+    //copia do vetor de produtos
+
+    let vetorTemp = [...produtos]
+
+    //Índice
+    let indice = vetorTemp.findIndex((p)=>{
+      return p.codigo === objProduto.codigo;
+    })
+
+    vetorTemp.splice(indice,1)
+
+    //atualizando o vetor de produtos
+    setProdutos(vetorTemp);
+
+    //Limpar formulário
+    limparFormulário();
+})
+}
   //limpar formulário
 
   const limparFormulário =() => {
     setObjProduto(produto);
+    setBtnCadastrar(true);
   }
   //sececionar produto
 
@@ -64,8 +98,8 @@ function App() {
   //retorno
   return (
     <div>
-      <Formulario botao={btnCadastrar} eventoTeclado={aoDigitar}cadastrar={cadastrar} obj={objProduto}
-      />
+      <Formulario botao={btnCadastrar} eventoTeclado={aoDigitar}cadastrar={cadastrar} obj={objProduto} remover={remover}
+      cancelar = {limparFormulário}/>
       <Tabela vetor={produtos} selecionar={selecionarProduto}/>
     </div>
   );
