@@ -10,7 +10,10 @@ function App() {
 
       codigo :0,
       nome :'',
-      marca:''
+      marca:'',
+      data:'',
+      garantia:'',
+      preco:''
 
     }
 

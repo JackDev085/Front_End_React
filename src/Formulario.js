@@ -3,6 +3,9 @@ function Formulario({botao,eventoTeclado,cadastrar,obj,cancelar, remover, altera
         <form>
             <input type='text' value={obj.nome} onChange={eventoTeclado} name= 'nome' placeholder='Nome' className='form-control'></input>
             <input type='text' value={obj.marca} onChange={eventoTeclado} name='marca' placeholder='Marca'className='form-control'></input>
+            <input type='text' value={obj.preco} onChange={eventoTeclado} name='preco' placeholder='Preço'className='form-control'></input>
+            <input type='text' value={obj.data} onChange={eventoTeclado} name='data' placeholder='Data'className='form-control'></input>
+            <input type='text' value={obj.garantia} onChange={eventoTeclado} name='garantia' placeholder='Garantia'className='form-control'></input>
             {
                 botao
                 ?
@@ -14,8 +17,6 @@ function Formulario({botao,eventoTeclado,cadastrar,obj,cancelar, remover, altera
                     <input type='button' value='Cancelar' onClick={cancelar} className= 'btn btn-secondary'></input>
                 </div>
             }
-            
-           
         </form>
     )
 }
